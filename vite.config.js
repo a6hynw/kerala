@@ -5,4 +5,6 @@ import tailwind from '@tailwindcss/vite'
 // Vite configuration: enable React plugin and Tailwind CSS integration
 export default defineConfig({
   plugins: [react(), tailwind()],
+  base: '/kerala-ai-website/',
+
 })
