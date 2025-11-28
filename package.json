@@ -36,5 +36,21 @@
   },
   "build": {
     "outDir": "dist"
+  },
+  "github": {
+    "actions": {
+      "build": {
+        "name": "Build frontend",
+        "run": "npm run build"
+      },
+      "deploy": {
+        "name": "Deploy to GitHub Pages",
+        "uses": "peaceiris/actions-gh-pages@v3",
+        "with": {
+          "github_token": "${{ secrets.GITHUB_TOKEN }}",
+          "publish_dir": "./dist"
+        }
+      }
+    }
   }
 }
