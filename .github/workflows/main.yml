@@ -37,3 +37,8 @@ jobs:
         run: |
           cd kerala-ai-website/backend
           npm start
+
+      - name: Update index.html with Vite references
+        run: |
+          echo '<link rel="icon" type="image/svg+xml" href="/vite.svg" />' >> kerala-ai-website/frontend/index.html
+          echo '<script type="module" src="/src/main.jsx"></script>' >> kerala-ai-website/frontend/index.html
