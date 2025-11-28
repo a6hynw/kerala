@@ -1,0 +1,39 @@
+name: Run Frontend & Backend
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  run-apps:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # Install dependencies for root (frontend)
+      - name: Install frontend dependencies
+        run: npm install
+
+      # Install dependencies for backend folder
+      - name: Install backend dependencies
+        run: |
+          cd kerala-ai/backend
+          npm install
+
+      # Run frontend (npm run dev)
+      - name: Run frontend server
+        run: npm run dev &
+        
+      # Run backend (npm start)
+      - name: Run backend server
+        run: |
+          cd kerala-ai-website/backend
+          npm start
